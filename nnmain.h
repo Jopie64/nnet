@@ -2,12 +2,15 @@
 #define NNMAIN_H
 
 #include <QMainWindow>
+#include <memory>
 
 namespace Ui {
 class NNMain;
 }
 
 class StringList;
+class NNet;
+
 
 class NNMain : public QMainWindow
 {
@@ -25,7 +28,8 @@ private slots:
 private:
     Ui::NNMain *ui;
 
-    StringList* output;
+    std::shared_ptr<StringList> output;
+    std::shared_ptr<NNet> nnet;
 };
 
 #endif // NNMAIN_H

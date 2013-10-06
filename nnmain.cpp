@@ -2,6 +2,7 @@
 #include "ui_nnmain.h"
 #include <iostream>
 #include "QStringListModel"
+#include "nnet.h"
 
 using namespace std;
 
@@ -21,16 +22,16 @@ public:
 NNMain::NNMain(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::NNMain),
-    output(new StringList())
+    output(new StringList()),
+    nnet(new NNet(1000,3))
 {
     ui->setupUi(this);
-    ui->listOutput->setModel(output);
+    ui->listOutput->setModel(output.get());
 }
 
 NNMain::~NNMain()
 {
     delete ui;
-    delete output;
 }
 
 void NNMain::on_Test_clicked()
